@@ -1,12 +1,131 @@
 ---
 import "../styles/global.css";
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
+import EmploymentItem from '../components/EmploymentItem.astro';
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const jobs = [
+  {
+    period: '2024 - present',
+    title: 'Associate Research Engineer - ABB',
+    subTitle: 'Intern Research Engineer',
+    description: `
+      Built monitoring algorithms for comparing baseline “healthy” powertrain states to live operating data both in embedded hardware and on the cloud separately.<br><br>
+      Built a testing framework with MATLAB and Simulink to verify all operating configurations automatically.<br><br>
+      Built an algorithm for improving training time of machine learning algorithms, with only a small prediction accuracy drop.<br><br>
+      Drove the project forward with weekly updates, prioritizing the next most important tasks.
+    `,
+    skills: ['C++', 'Python', 'MATLAB', 'Simulink'],
+    href: 'https://global.abb/group/en'
+  },
+  {
+    period: 'oct. - dec. 2023',
+    title: 'Full stack Developer - Klardeal',
+    subTitle: '',
+    description: `
+      Delivered a deal-matching platform in <2 months, acquiring 25 paying customers during my contract.
+    `,
+    skills: ['TypeScript', 'SQL', 'HTML', 'CSS'],
+    href: 'https://klardeal.se/'
+  },
+  {
+    period: 'nov. 2021 - jan. 2022',
+    title: 'Software Developer - Project course (Westermo)',
+    subTitle: '',
+    description: `
+      Worked together with a team of 6 students in total building risk integration software as a web app for Westermo. This was a part of a project course on Software Engineering at Mälardalens University.<br><br>
+	  Responsible for primarily leading the frontend development of the project.
+    `,
+    skills: ['Vue.js', 'Docker', 'SQL'],
+    href: 'https://www.mdu.se/utbildning/kurser?kod=DVA313'
+  },
+];
 ---
 
 <Layout>
-	<Welcome />
+	<!-- <Welcome /> -->
+	 <header class="pxPage w-full flex mt-16 items-center">
+		<div class="w-full max-w-[80rem] pxPage mx-auto flex items-center gap-6">
+			<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H9H21C24.1826 0 27.2348 1.58035 29.4853 4.3934C31.7357 7.20645 33 11.0218 33 15C33 18.9782 31.7357 22.7936 29.4853 25.6066C27.2348 28.4196 24.1826 30 21 30L25 36H32.0021L28.5 29.9956C30.3398 28.6248 32.1035 26.9004 33.7148 23.5664L48.0001 47.998H39.0001L35.5017 42H29L33 48H24L12 30H9V48H0V30V21V9V0ZM18 21C21.3137 21 24 18.3137 24 15C24 11.6863 21.3137 9 18 9H9V21H18Z" fill="#FAFAFA"/>
+			</svg>
+			<div>
+				<h1 class="font-bold text-4xl">Rikard Hallberg</h1>
+				<span class="font-medium text-2xl text-[#929292]">Software Engineer</span>
+			</div>
+			<span class="h-20 bg-foreground w-0.5"></span>
+			<ul class="flex gap-6 items-center">
+				<li>
+					<a href="https://www.linkedin.com/in/rikardhallberg" referrerpolicy="no-referrer">
+						<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g clip-path="url(#clip0_1398_3058)">
+								<path d="M33.6313 4H6.3625C5.05625 4 4 5.03125 4 6.30625V33.6875C4 34.9625 5.05625 36 6.3625 36H33.6313C34.9375 36 36 34.9625 36 33.6938V6.30625C36 5.03125 34.9375 4 33.6313 4ZM13.4937 31.2687H8.74375V15.9937H13.4937V31.2687ZM11.1188 13.9125C9.59375 13.9125 8.3625 12.6812 8.3625 11.1625C8.3625 9.64375 9.59375 8.4125 11.1188 8.4125C12.6375 8.4125 13.8687 9.64375 13.8687 11.1625C13.8687 12.675 12.6375 13.9125 11.1188 13.9125ZM31.2687 31.2687H26.525V23.8438C26.525 22.075 26.4937 19.7937 24.0562 19.7937C21.5875 19.7937 21.2125 21.725 21.2125 23.7188V31.2687H16.475V15.9937H21.025V18.0813H21.0875C21.7187 16.8813 23.2688 15.6125 25.575 15.6125C30.3813 15.6125 31.2687 18.775 31.2687 22.8875V31.2687V31.2687Z" fill="white"/>
+							</g>
+							<defs>
+								<clipPath id="clip0_1398_3058">
+									<rect width="32" height="32" fill="white" transform="translate(4 4)"/>
+								</clipPath>
+							</defs>
+						</svg>
+					</a>
+				</li>
+				<li>
+					<a href="https://github.com/rikhall1515" referrerpolicy="no-referrer">
+						<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g clip-path="url(#clip0_1398_3059)">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M20.0132 4C11.1583 4 4 11.2111 4 20.1322C4 27.2633 8.58659 33.2997 14.9494 35.4362C15.7449 35.5968 16.0363 35.089 16.0363 34.6619C16.0363 34.2879 16.0101 33.006 16.0101 31.6703C11.5556 32.632 10.628 29.7472 10.628 29.7472C9.91212 27.8776 8.85143 27.3971 8.85143 27.3971C7.39348 26.4088 8.95763 26.4088 8.95763 26.4088C10.5749 26.5157 11.4235 28.0648 11.4235 28.0648C12.8549 30.5218 15.1615 29.8276 16.0894 29.4001C16.2218 28.3585 16.6463 27.6373 17.097 27.2368C13.5442 26.8628 9.80625 25.474 9.80625 19.2774C9.80625 17.5146 10.4421 16.0724 11.4497 14.9507C11.2908 14.5502 10.7339 12.8939 11.609 10.6772C11.609 10.6772 12.9611 10.2497 16.0098 12.3331C17.315 11.98 18.6611 11.8003 20.0132 11.7988C21.3653 11.7988 22.7436 11.986 24.0164 12.3331C27.0654 10.2497 28.4175 10.6772 28.4175 10.6772C29.2926 12.8939 28.7354 14.5502 28.5764 14.9507C29.6106 16.0724 30.2202 17.5146 30.2202 19.2774C30.2202 25.474 26.4823 26.8359 22.9029 27.2368C23.4864 27.7442 23.9898 28.7056 23.9898 30.2281C23.9898 32.3914 23.9636 34.1277 23.9636 34.6616C23.9636 35.089 24.2553 35.5968 25.0505 35.4365C31.4133 33.2994 35.9999 27.2633 35.9999 20.1322C36.0262 11.2111 28.8416 4 20.0132 4Z" fill="white"/>
+							</g>
+							<defs>
+								<clipPath id="clip0_1398_3059">
+									<rect width="32" height="32" fill="white" transform="translate(4 4)"/>
+								</clipPath>
+							</defs>
+						</svg>
+					</a>
+				</li>
+			</ul>
+		</div>
+	 </header>
+	 <main class="min-h-[100svh]">
+		<section
+			class=
+			"h-full min-h-[20rem] w-full py-8 m:py-16 lg:py-[5.25rem] relative overflow-hidden"
+			id="about"
+		>
+			<div class="w-full max-w-[80rem] pxPage mx-auto flex flex-col">
+				<h2 class="capitalize tracking-wider w-fit mb-6">About</h2>
+				<p class="max-w-[58ch] font-regular text-2xl mb-12">
+					I am a Software Engineer building applications that are fast, easy to use, and do their job.
+					<br>
+					<br>
+					Currently, I am an Associate Research Engineer at <a class="text-primary font-bold" href="https://global.abb/group/en" referrerpolicy="no-referrer">ABB</a>, building monitoring solutions for
+					powertrains and machine learning algorithms. I provide solutions to real problems that our
+					customers are experiencing in the field.
+					<br>
+					<br>
+					When I am not at my job, I tend to either improve my skills, gym, play piano,
+					or hang out with friends.
+				</p>
+				<a href="mailto:r15.hallberg@gmail.com" class="bg-primary h-15 rounded-full px-6 flex items-center justify-center max-w-80 text-primary-foreground font-bold text-2xl">Let's Work Together</a>
+			</div>
+		</section>
+		<section
+			class=
+			"h-full min-h-[20rem] w-full relative overflow-hidden"
+			id="experience"
+		>
+			<div class="w-full max-w-[80rem] pxPage mx-auto flex flex-col">
+				<div class="flex items-center mb-6">
+					<h2 class="capitalize tracking-wider w-fit">Experience -</h2>
+					<a href="/Rikard_Hallberg_CV.pdf" class="text-primary font-bold text-xl px-6 mb-[-0.4rem]">Full Resumé</a>
+				</div>
+				<ul class="space-y-12">
+					{jobs.map(job => (
+						<EmploymentItem {...job} />
+					))}
+				</ul>
+			</div>
+		</section>
+	 </main>
+	 <footer></footer>
 </Layout>

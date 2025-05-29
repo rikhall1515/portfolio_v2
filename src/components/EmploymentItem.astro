@@ -1,0 +1,29 @@
+---
+const { period, title, subTitle, description, skills, href } = Astro.props;
+---
+<li>
+  <a href={href} referrerpolicy="no-referrer" class="block hover:opacity-90 transition-opacity">
+    <div>
+      <span class="text-[#929292] text-2xl">{period}</span>
+      {!subTitle && (
+          <h3 class="mt-1 text-xl font-semibold mb-6">{title}</h3>
+        )}
+      {subTitle && (
+          <h3 class="mt-1 text-xl font-semibold">{title}</h3>
+      )}
+    </div>
+    {subTitle && (
+      <h4 class="text-[#929292] mb-6">{subTitle}</h4>
+    )}
+    <p class="max-w-[58ch] font-regular mb-12">
+      <Fragment set:html={description}/>
+    </p>
+    {skills?.length && (
+      <ul class="flex flex-wrap items-center gap-4">
+        {skills.map((skill: string) => (
+          <li class="border-primary border-2 px-6 py-2 rounded-full text-sm">{skill}</li>
+        ))}
+      </ul>
+    )}
+  </a>
+</li>

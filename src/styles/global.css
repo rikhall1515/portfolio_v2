@@ -1,1 +1,127 @@
+@config "../../tailwind.config.ts";
 @import "tailwindcss";
+@import "./content.css";
+
+:root,
+html,
+html.light {
+  /* hsl(274 84% 5%) */
+  --background: 274 40% 5%;
+
+  /* hsl(274 40% 98%) */
+  --foreground: 274 40% 98%;
+
+  /* hsl(274 84% 10%) */
+  --card: 274 84% 10%;
+
+  /* hsl(274 40% 98%) */
+  --card-foreground: 274 40% 98%;
+
+  /* hsl(274 84% 10%) */
+  --popover: 274 84% 10%;
+
+  /* hsl(274 40% 98%) */
+  --popover-foreground: 274 40% 98%;
+
+  /* hsl(274 70% 61%) */
+  --primary: 274 70% 61%;
+
+  /* hsl(274 47% 11%) */
+  --primary-foreground: 274 47% 11%;
+
+  /* hsl(274 72% 58%) */
+  --secondary: 274 72% 58%;
+
+  /* hsl(274 40% 98%) */
+  --secondary-foreground: 274 40% 98%;
+
+  /* hsl(274 33% 18%) */
+  --muted: 274 33% 18%;
+
+  /* hsl(274 20% 65%) */
+  --muted-foreground: 274 20% 65%;
+
+  /* hsl(274 70% 80%) */
+  --accent: 274 70% 80%;
+
+  /* hsl(274 47% 11%) */
+  --accent-foreground: 274 47% 11%;
+
+  /* hsl(101 70% 60%) */
+  --successful: 101 70% 60%;
+
+  /* hsl(274 47% 11%) */
+  --successful-foreground: 274 47% 11%;
+
+  /* hsl(25 70% 60%) */
+  --pending: 25 70% 60%;
+
+  /* hsl(274 47% 11%) */
+  --pending-foreground: 274 47% 11%;
+
+  /* hsl(0 70% 60%) */
+  --destructive: 0 70% 60%;
+
+  /* hsl(274 47% 11%) */
+  --destructive-foreground: 274 47% 11%;
+
+  /* hsl(274 33% 18%) */
+  --border: 274 33% 18%;
+
+  /* hsl(274 33% 18%) */
+  --input: 274 33% 18%;
+
+  /* hsl(213 27% 84%) */
+  --ring: 274 27% 84%;
+}
+
+:root {
+  --page-x-spacing: 3rem;
+  --page-x-spacing2: 2rem;
+  --header-height: 8rem;
+  --header-height-scrolled: 4.5rem;
+  --sidebar-start-x: 0px;
+  --sidebar-end-x: 0px;
+}
+
+@media (width >= 64rem) {
+  :root {
+    --page-x-spacing: 8rem;
+    --page-x-spacing2: 7rem;
+  }
+}
+
+* {
+  @apply subpixel-antialiased;
+}
+
+html {
+  @apply bg-background;
+}
+
+html,
+body {
+  @apply size-full
+    text-foreground
+    [scrollbar-gutter:stable];
+}
+
+body {
+  @apply scroll-smooth;
+}
+
+.pxPage {
+  @apply px-6 m:px-[var(--page-x-spacing)];
+}
+
+.pxPageTwo {
+  @apply px-6 m:px-[--page-x-spacing2];
+}
+
+dialog {
+  @apply m-0 block [inset-inline-end:auto] [inset-inline-start:auto];
+}
+
+dialog:-internal-dialog-in-top-layer {
+  @apply visible;
+}
