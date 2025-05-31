@@ -1,10 +1,20 @@
 ---
-const { period, title, subTitle, description, skills, href } = Astro.props;
+const { startDate, endDate, startLabel, endLabel, ariaLabel, title, subTitle, description, skills, href } = Astro.props;
 ---
 <li>
-  <a href={href} referrerpolicy="no-referrer" class="block hover:opacity-90 transition-opacity">
+  <a href={href} referrerpolicy="no-referrer" rel="noopener noreferrer" class="block hover:opacity-90 transition-opacity" aria-label={ariaLabel}>
     <div>
-      <span class="text-[#929292] text-2xl">{period}</span>
+      {endDate === 'present' ? (
+        <time class="text-[#929292] text-2xl" datetime={startDate}>
+          {startLabel} – present
+        </time>
+      ) : (
+        <div class="text-[#929292] text-2xl">
+          <time datetime={startDate}>{startLabel}</time>
+          <span aria-hidden="true"> – </span>
+          <time datetime={endDate}>{endLabel}</time>
+        </div>
+      )}
       {!subTitle && (
           <h3 class="mt-1 text-xl font-semibold mb-6">{title}</h3>
         )}
@@ -19,9 +29,9 @@ const { period, title, subTitle, description, skills, href } = Astro.props;
       <Fragment set:html={description}/>
     </p>
     {skills?.length && (
-      <ul class="flex flex-wrap items-center gap-4">
+      <ul class="flex flex-wrap items-center gap-4" aria-hidden="true">
         {skills.map((skill: string) => (
-          <li class="border-primary border-2 px-6 py-2 rounded-full text-sm">{skill}</li>
+          <li class="border-primary border-2 px-6 py-2 rounded-full text-sm font-medium">{skill}</li>
         ))}
       </ul>
     )}

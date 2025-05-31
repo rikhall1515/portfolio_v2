@@ -2,11 +2,14 @@
 import "../styles/global.css";
 import Layout from '../layouts/Layout.astro';
 import EmploymentItem from '../components/EmploymentItem.astro';
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import CopyEmail from "../components/CopyEmail.astro";
 const jobs = [
   {
-    period: '2024 - present',
+	startDate: "2024-01-01",
+    endDate: "present",
+    startLabel: '2024',
+	endLabel: 'present',
+	ariaLabel: 'Associate Research Engineer at ABB, from 2024 to present day.',
     title: 'Associate Research Engineer - ABB',
     subTitle: 'Intern Research Engineer',
     description: `
@@ -16,10 +19,14 @@ const jobs = [
       Drove the project forward with weekly updates, prioritizing the next most important tasks.
     `,
     skills: ['C++', 'Python', 'MATLAB', 'Simulink'],
-    href: 'https://global.abb/group/en'
+    href: 'https://global.abb/group/en/technology/corporate-research-centers/sweden'
   },
   {
-    period: 'oct. - dec. 2023',
+	startDate: "2023-10-01",
+    endDate: "2023-12-31",
+	startLabel: 'Oct',
+	endLabel: 'Dec 2023',
+	ariaLabel: 'Full stack developer at Klardeal between october and december of 2023.',
     title: 'Full stack Developer - Klardeal',
     subTitle: '',
     description: `
@@ -29,7 +36,11 @@ const jobs = [
     href: 'https://klardeal.se/'
   },
   {
-    period: 'nov. 2021 - jan. 2022',
+	startDate: "2021-11-01",
+    endDate: "2022-01-31",
+	startLabel: 'Nov 2021',
+	endLabel: 'Jan 2022',
+	ariaLabel: 'Software Developer in a project course held by Mälardalens University. Worked together with a team students on a project we received from Westermo.',
     title: 'Software Developer - Project course (Westermo)',
     subTitle: '',
     description: `
@@ -43,62 +54,74 @@ const jobs = [
 ---
 
 <Layout>
-	<!-- <Welcome /> -->
-	 <header class="pxPage w-full flex mt-16 items-center">
-		<div class="w-full max-w-[80rem] pxPage mx-auto flex items-center gap-6">
-			<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H9H21C24.1826 0 27.2348 1.58035 29.4853 4.3934C31.7357 7.20645 33 11.0218 33 15C33 18.9782 31.7357 22.7936 29.4853 25.6066C27.2348 28.4196 24.1826 30 21 30L25 36H32.0021L28.5 29.9956C30.3398 28.6248 32.1035 26.9004 33.7148 23.5664L48.0001 47.998H39.0001L35.5017 42H29L33 48H24L12 30H9V48H0V30V21V9V0ZM18 21C21.3137 21 24 18.3137 24 15C24 11.6863 21.3137 9 18 9H9V21H18Z" fill="#FAFAFA"/>
-			</svg>
-			<div>
-				<h1 class="font-bold text-4xl">Rikard Hallberg</h1>
-				<span class="font-medium text-2xl text-[#929292]">Software Engineer</span>
+	<a
+	href="#content"
+	class="absolute left-0 top-0 block -translate-y-[200%]
+			rounded bg-gradient-to-b from-primary to-primary/80
+			px-4 py-3 text-sm font-bold uppercase tracking-widest text-primary-foreground focus-visible:translate-y-0"
+	>
+	Skip to Content
+	</a>
+	 <header class="w-full flex mt-16 items-center">
+		<div class="w-full max-w-[60rem] pxPage mx-auto flex md:items-center gap-6 md:flex-row flex-col">
+			<div class="flex items-center gap-6">
+				<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H9H21C24.1826 0 27.2348 1.58035 29.4853 4.3934C31.7357 7.20645 33 11.0218 33 15C33 18.9782 31.7357 22.7936 29.4853 25.6066C27.2348 28.4196 24.1826 30 21 30L25 36H32.0021L28.5 29.9956C30.3398 28.6248 32.1035 26.9004 33.7148 23.5664L48.0001 47.998H39.0001L35.5017 42H29L33 48H24L12 30H9V48H0V30V21V9V0ZM18 21C21.3137 21 24 18.3137 24 15C24 11.6863 21.3137 9 18 9H9V21H18Z" fill="#FAFAFA"/>
+				</svg>
+				<div>
+					<h1 class="font-bold text-2xl md:text-4xl">Rikard Hallberg</h1>
+					<span class="font-medium md:text-2xl text-[#929292]">Software Engineer</span>
+				</div>
 			</div>
-			<span class="h-20 bg-foreground w-0.5"></span>
-			<ul class="flex gap-6 items-center">
-				<li>
-					<a href="https://www.linkedin.com/in/rikardhallberg" referrerpolicy="no-referrer">
-						<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<g clip-path="url(#clip0_1398_3058)">
-								<path d="M33.6313 4H6.3625C5.05625 4 4 5.03125 4 6.30625V33.6875C4 34.9625 5.05625 36 6.3625 36H33.6313C34.9375 36 36 34.9625 36 33.6938V6.30625C36 5.03125 34.9375 4 33.6313 4ZM13.4937 31.2687H8.74375V15.9937H13.4937V31.2687ZM11.1188 13.9125C9.59375 13.9125 8.3625 12.6812 8.3625 11.1625C8.3625 9.64375 9.59375 8.4125 11.1188 8.4125C12.6375 8.4125 13.8687 9.64375 13.8687 11.1625C13.8687 12.675 12.6375 13.9125 11.1188 13.9125ZM31.2687 31.2687H26.525V23.8438C26.525 22.075 26.4937 19.7937 24.0562 19.7937C21.5875 19.7937 21.2125 21.725 21.2125 23.7188V31.2687H16.475V15.9937H21.025V18.0813H21.0875C21.7187 16.8813 23.2688 15.6125 25.575 15.6125C30.3813 15.6125 31.2687 18.775 31.2687 22.8875V31.2687V31.2687Z" fill="white"/>
-							</g>
-							<defs>
-								<clipPath id="clip0_1398_3058">
-									<rect width="32" height="32" fill="white" transform="translate(4 4)"/>
-								</clipPath>
-							</defs>
-						</svg>
-					</a>
-				</li>
-				<li>
-					<a href="https://github.com/rikhall1515" referrerpolicy="no-referrer">
-						<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<g clip-path="url(#clip0_1398_3059)">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M20.0132 4C11.1583 4 4 11.2111 4 20.1322C4 27.2633 8.58659 33.2997 14.9494 35.4362C15.7449 35.5968 16.0363 35.089 16.0363 34.6619C16.0363 34.2879 16.0101 33.006 16.0101 31.6703C11.5556 32.632 10.628 29.7472 10.628 29.7472C9.91212 27.8776 8.85143 27.3971 8.85143 27.3971C7.39348 26.4088 8.95763 26.4088 8.95763 26.4088C10.5749 26.5157 11.4235 28.0648 11.4235 28.0648C12.8549 30.5218 15.1615 29.8276 16.0894 29.4001C16.2218 28.3585 16.6463 27.6373 17.097 27.2368C13.5442 26.8628 9.80625 25.474 9.80625 19.2774C9.80625 17.5146 10.4421 16.0724 11.4497 14.9507C11.2908 14.5502 10.7339 12.8939 11.609 10.6772C11.609 10.6772 12.9611 10.2497 16.0098 12.3331C17.315 11.98 18.6611 11.8003 20.0132 11.7988C21.3653 11.7988 22.7436 11.986 24.0164 12.3331C27.0654 10.2497 28.4175 10.6772 28.4175 10.6772C29.2926 12.8939 28.7354 14.5502 28.5764 14.9507C29.6106 16.0724 30.2202 17.5146 30.2202 19.2774C30.2202 25.474 26.4823 26.8359 22.9029 27.2368C23.4864 27.7442 23.9898 28.7056 23.9898 30.2281C23.9898 32.3914 23.9636 34.1277 23.9636 34.6616C23.9636 35.089 24.2553 35.5968 25.0505 35.4365C31.4133 33.2994 35.9999 27.2633 35.9999 20.1322C36.0262 11.2111 28.8416 4 20.0132 4Z" fill="white"/>
-							</g>
-							<defs>
-								<clipPath id="clip0_1398_3059">
-									<rect width="32" height="32" fill="white" transform="translate(4 4)"/>
-								</clipPath>
-							</defs>
-						</svg>
-					</a>
-				</li>
-			</ul>
+			<span class="h-20 bg-foreground w-0.5 md:block hidden"></span>
+			<nav aria-label="Social media links">
+				<ul class="flex gap-6 items-center">
+					<li>
+						<a href="https://www.linkedin.com/in/rikardhallberg" referrerpolicy="no-referrer" rel="noopener noreferrer" aria-label="LinkedIn profile of Rikard Hallberg">
+							<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+								<g clip-path="url(#clip0_1398_3058)">
+									<path d="M33.6313 4H6.3625C5.05625 4 4 5.03125 4 6.30625V33.6875C4 34.9625 5.05625 36 6.3625 36H33.6313C34.9375 36 36 34.9625 36 33.6938V6.30625C36 5.03125 34.9375 4 33.6313 4ZM13.4937 31.2687H8.74375V15.9937H13.4937V31.2687ZM11.1188 13.9125C9.59375 13.9125 8.3625 12.6812 8.3625 11.1625C8.3625 9.64375 9.59375 8.4125 11.1188 8.4125C12.6375 8.4125 13.8687 9.64375 13.8687 11.1625C13.8687 12.675 12.6375 13.9125 11.1188 13.9125ZM31.2687 31.2687H26.525V23.8438C26.525 22.075 26.4937 19.7937 24.0562 19.7937C21.5875 19.7937 21.2125 21.725 21.2125 23.7188V31.2687H16.475V15.9937H21.025V18.0813H21.0875C21.7187 16.8813 23.2688 15.6125 25.575 15.6125C30.3813 15.6125 31.2687 18.775 31.2687 22.8875V31.2687V31.2687Z" fill="white"/>
+								</g>
+								<defs>
+									<clipPath id="clip0_1398_3058">
+										<rect width="32" height="32" fill="white" transform="translate(4 4)"/>
+									</clipPath>
+								</defs>
+							</svg>
+						</a>
+					</li>
+					<li>
+						<a href="https://github.com/rikhall1515" referrerpolicy="no-referrer" rel="noopener noreferrer" aria-label="GitHub profile of Rikard Hallberg">
+							<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+								<g clip-path="url(#clip0_1398_3059)">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M20.0132 4C11.1583 4 4 11.2111 4 20.1322C4 27.2633 8.58659 33.2997 14.9494 35.4362C15.7449 35.5968 16.0363 35.089 16.0363 34.6619C16.0363 34.2879 16.0101 33.006 16.0101 31.6703C11.5556 32.632 10.628 29.7472 10.628 29.7472C9.91212 27.8776 8.85143 27.3971 8.85143 27.3971C7.39348 26.4088 8.95763 26.4088 8.95763 26.4088C10.5749 26.5157 11.4235 28.0648 11.4235 28.0648C12.8549 30.5218 15.1615 29.8276 16.0894 29.4001C16.2218 28.3585 16.6463 27.6373 17.097 27.2368C13.5442 26.8628 9.80625 25.474 9.80625 19.2774C9.80625 17.5146 10.4421 16.0724 11.4497 14.9507C11.2908 14.5502 10.7339 12.8939 11.609 10.6772C11.609 10.6772 12.9611 10.2497 16.0098 12.3331C17.315 11.98 18.6611 11.8003 20.0132 11.7988C21.3653 11.7988 22.7436 11.986 24.0164 12.3331C27.0654 10.2497 28.4175 10.6772 28.4175 10.6772C29.2926 12.8939 28.7354 14.5502 28.5764 14.9507C29.6106 16.0724 30.2202 17.5146 30.2202 19.2774C30.2202 25.474 26.4823 26.8359 22.9029 27.2368C23.4864 27.7442 23.9898 28.7056 23.9898 30.2281C23.9898 32.3914 23.9636 34.1277 23.9636 34.6616C23.9636 35.089 24.2553 35.5968 25.0505 35.4365C31.4133 33.2994 35.9999 27.2633 35.9999 20.1322C36.0262 11.2111 28.8416 4 20.0132 4Z" fill="white"/>
+								</g>
+								<defs>
+									<clipPath id="clip0_1398_3059">
+										<rect width="32" height="32" fill="white" transform="translate(4 4)"/>
+									</clipPath>
+								</defs>
+							</svg>
+						</a>
+					</li>
+				</ul>
+			</nav>
 		</div>
 	 </header>
-	 <main class="min-h-[100svh]">
+	 <main class="min-h-[100svh]" id="content">
 		<section
 			class=
 			"h-full min-h-[20rem] w-full py-8 m:py-16 lg:py-[5.25rem] relative overflow-hidden"
+			aria-labelledby="about-heading"
 			id="about"
 		>
-			<div class="w-full max-w-[80rem] pxPage mx-auto flex flex-col">
-				<h2 class="capitalize tracking-wider w-fit mb-6">About</h2>
-				<p class="max-w-[58ch] font-regular text-2xl mb-12">
+			<div class="w-full max-w-[60rem] pxPage mx-auto flex flex-col">
+				<h2 class="capitalize tracking-wider w-fit mb-6" id="about-heading">About</h2>
+				<p class="max-w-[58ch] font-regular text-xl md:text-2xl mb-12">
 					I am a Software Engineer building applications that are fast, easy to use, and do their job.
 					<br>
 					<br>
-					Currently, I am an Associate Research Engineer at <a class="text-primary font-bold" href="https://global.abb/group/en" referrerpolicy="no-referrer">ABB</a>, building monitoring solutions for
+					Currently, I am an Associate Research Engineer at <a class="text-primary font-bold transition-colors duration-150 ease-in-out hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-accent" href="https://global.abb/group/en/technology/corporate-research-centers/sweden" referrerpolicy="no-referrer" rel="noopener noreferrer">ABB</a>, building monitoring solutions for
 					powertrains and machine learning algorithms. I provide solutions to real problems that our
 					customers are experiencing in the field.
 					<br>
@@ -106,26 +129,45 @@ const jobs = [
 					When I am not at my job, I tend to either improve my skills, gym, play piano,
 					or hang out with friends.
 				</p>
-				<a href="mailto:r15.hallberg@gmail.com" class="bg-primary h-15 rounded-full px-6 flex items-center justify-center max-w-80 text-primary-foreground font-bold text-2xl">Let's Work Together</a>
+				<div class="flex md:items-center gap-6 flex-col md:flex-row max-w-[40rem]">
+					<a href="mailto:r15.hallberg@gmail.com"
+					class="bg-primary h-15 rounded-full px-2 w-full
+							flex items-center justify-center 
+							text-primary-foreground font-bold text-xl
+							transition-colors duration-150 ease-in-out
+							hover:bg-primary/80 focus:outline-none
+							focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-accent"
+						aria-label="Send email to r15.hallberg@gmail.com">
+					Let's Work Together
+					</a>
+					<CopyEmail />
+				</div>
 			</div>
 		</section>
 		<section
 			class=
-			"h-full min-h-[20rem] w-full relative overflow-hidden"
+			"h-full min-h-[20rem] w-full relative overflow-hidden pb-12"
+			aria-labelledby="experience-heading"
 			id="experience"
 		>
-			<div class="w-full max-w-[80rem] pxPage mx-auto flex flex-col">
-				<div class="flex items-center mb-6">
-					<h2 class="capitalize tracking-wider w-fit">Experience -</h2>
-					<a href="/Rikard_Hallberg_CV.pdf" class="text-primary font-bold text-xl px-6 mb-[-0.4rem]">Full Resumé</a>
-				</div>
-				<ul class="space-y-12">
+			<div class="w-full max-w-[60rem] pxPage mx-auto flex flex-col">
+				<h2 class="capitalize tracking-wider w-fit mb-6" id="experience-heading">Experience</h2>
+				<ul class="space-y-12 mb-12">
 					{jobs.map(job => (
 						<EmploymentItem {...job} />
 					))}
 				</ul>
+				<a href="/Rikard_Hallberg_CV.pdf" class="text-primary font-bold text-xl mb-[-0.4rem]" aria-label="View full Resumé (PDF)">View full Resumé</a>
 			</div>
 		</section>
 	 </main>
-	 <footer></footer>
+	 <footer role="contentinfo" class="w-full max-w-[60rem] pxPage mx-auto flex flex-col">
+		<p class="max-w-[52ch]">
+			Designed in <a class="text-primary font-bold transition-colors duration-150 ease-in-out hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-accent" href="https://www.figma.com/" referrerpolicy="no-referrer" rel="noopener noreferrer">Figma</a>, 
+			coded in <a class="text-primary font-bold transition-colors duration-150 ease-in-out hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-accent" href="https://code.visualstudio.com/" referrerpolicy="no-referrer" rel="noopener noreferrer">Visual Studio Code</a> by me. 
+			Built with <a class="text-primary font-bold transition-colors duration-150 ease-in-out hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-accent" href="https://astro.build/" referrerpolicy="no-referrer" rel="noopener noreferrer">Astro</a> and
+			<a class="text-primary font-bold transition-colors duration-150 ease-in-out hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-accent" href="https://tailwindcss.com/" referrerpolicy="no-referrer" rel="noopener noreferrer">Tailwind CSS</a>, deployed with <a class="text-primary font-bold transition-colors duration-150 ease-in-out hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-accent" href="https://pages.cloudflare.com/" referrerpolicy="no-referrer" rel="noopener noreferrer">Cloudflare Pages</a>. All text is written in the <a class="text-primary font-bold transition-colors duration-150 ease-in-out hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-accent" href="https://typogram.co/font-discovery/how-to-use-poppins-font" referrerpolicy="no-referrer" rel="noopener noreferrer">Poppins</a> typeface.
+		</p>
+		
+	 </footer>
 </Layout>
