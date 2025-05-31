@@ -2,6 +2,30 @@
 @import "tailwindcss";
 @import "./content.css";
 
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/Poppins-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/Poppins-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/Poppins-Bold.woff2") format("woff2");
+  font-display: swap;
+}
+
 :root,
 html,
 html.light {
@@ -86,8 +110,8 @@ html.light {
 
 @media (width >= 64rem) {
   :root {
-    --page-x-spacing: 8rem;
-    --page-x-spacing2: 7rem;
+    --page-x-spacing: 12rem;
+    --page-x-spacing2: 10rem;
   }
 }
 
@@ -97,6 +121,7 @@ html.light {
 
 html {
   @apply bg-background;
+  @apply font-poppins;
 }
 
 html,
