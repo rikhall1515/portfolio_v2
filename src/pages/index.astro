@@ -157,7 +157,11 @@ const jobs = [
 						<EmploymentItem {...job} />
 					))}
 				</ul>
-				<a href="/Rikard_Hallberg_CV.pdf" class="text-primary font-bold text-xl mb-[-0.4rem]" aria-label="View full Resumé (PDF)">View full Resumé</a>
+				<a href="/Rikard_Hallberg_CV.pdf" 
+				   class="inline-flex text-primary font-bold transition-colors duration-150 ease-in-out hover:text-primary/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-accent" aria-label="View full Resumé (PDF)">
+					View full Resumé
+					<svg class="h-4 w-4 m-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>
+				</a>
 			</div>
 		</section>
 	 </main>
